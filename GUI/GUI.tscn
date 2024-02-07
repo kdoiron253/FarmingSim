@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://c41enkoki3tvh"]
+
+[ext_resource type="Texture2D" uid="uid://i4yhoaiyfnp0" path="res://Assets/farmingTilesheetComplete.png" id="1_cdjay"]
+[ext_resource type="Script" path="res://GUI/GUI.gd" id="1_yfdvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rsdo"]
+atlas = ExtResource("1_cdjay")
+region = Rect2(128, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqm60"]
+atlas = ExtResource("1_cdjay")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_msdya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rsdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqm60")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxru4"]
+atlas = ExtResource("1_cdjay")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oo1y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxru4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_yfdvb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.164706, 0.164706, 0.164706, 0.631373)
+
+[node name="CarrotIcon" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(15, 12)
+sprite_frames = SubResource("SpriteFrames_msdya")
+
+[node name="CarrotLabel" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 8
+text = "= 0"
+vertical_alignment = 1
+
+[node name="OnionIcon" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(15, 33)
+sprite_frames = SubResource("SpriteFrames_oo1y6")
+
+[node name="OnionLabel" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 22.0
+offset_right = 63.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 8
+text = "= 0"
+vertical_alignment = 1

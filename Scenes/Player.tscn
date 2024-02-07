@@ -120,3 +120,5 @@ frame_progress = 0.59895
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qmhtf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
