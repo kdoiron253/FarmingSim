@@ -27,3 +27,7 @@ func _physics_process(delta):
 		motion = Vector2.ZERO
 	
 	move_and_collide(motion)
+
+
+func player_sell_method():
+	pass

@@ -56,6 +56,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iypdw")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"carrotgrowing",
@@ -75,6 +78,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_phl37")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"oniongrowing",
@@ -99,9 +105,11 @@ animation = &"none"
 
 [node name="OnionTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [node name="CarrotTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

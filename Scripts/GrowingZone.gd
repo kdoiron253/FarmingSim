@@ -49,11 +49,13 @@ func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 		if plant_grown:
 			if plant == 1:
 				Global.number_of_carrots += 1
+				$Plant.frame = 3
 				plant_growing = false
 				plant_grown = false
 				$Plant.play("none")
 			if plant == 2:
 				Global.number_of_onions += 1
+				$Plant.frame = 3
 				plant_growing = false
 				plant_grown = false
 				$Plant.play("none")
