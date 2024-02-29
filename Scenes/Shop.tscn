@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://dilotqkixr7at"]
+
+[ext_resource type="Texture2D" uid="uid://i4yhoaiyfnp0" path="res://Assets/farmingTilesheetComplete.png" id="1_gifji"]
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_p8pry"]
+[ext_resource type="PackedScene" uid="uid://dryfx3ygddgeg" path="res://Scenes/StrawberrySeedPack.tscn" id="3_318ge"]
+[ext_resource type="PackedScene" uid="uid://c4ybjexslfn66" path="res://Scenes/CornSeedPack.tscn" id="4_lyr0k"]
+[ext_resource type="PackedScene" uid="uid://bd74hqbmnctdi" path="res://Scenes/LettuceSeedPack.tscn" id="5_hd0v1"]
+[ext_resource type="PackedScene" uid="uid://db6tlrt3pg1n8" path="res://Scenes/Shop_Menu.tscn" id="6_1t61o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmlve"]
+atlas = ExtResource("1_gifji")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8f4g4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmlve")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk56p"]
+atlas = ExtResource("1_gifji")
+region = Rect2(0, 180, 33, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vb26p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk56p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plyui"]
+size = Vector2(27, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85jfn"]
+radius = 14.0
+
+[node name="Shop" type="StaticBody2D"]
+script = ExtResource("1_p8pry")
+
+[node name="ShopKeeper" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8f4g4")
+
+[node name="ShopArt" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vb26p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_plyui")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_85jfn")
+
+[node name="StrawberrySeedPack" parent="." instance=ExtResource("3_318ge")]
+visible = false
+position = Vector2(37, 19)
+
+[node name="CornSeedPack" parent="." instance=ExtResource("4_lyr0k")]
+visible = false
+position = Vector2(37, 4)
+
+[node name="LettuceSeedPack" parent="." instance=ExtResource("5_hd0v1")]
+visible = false
+position = Vector2(37, -10)
+
+[node name="ShopMenu" parent="." instance=ExtResource("6_1t61o")]
+position = Vector2(-29, -51)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

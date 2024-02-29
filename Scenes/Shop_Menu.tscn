@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=3 uid="uid://db6tlrt3pg1n8"]
+
+[ext_resource type="Texture2D" uid="uid://i4yhoaiyfnp0" path="res://Assets/farmingTilesheetComplete.png" id="1_2c4ai"]
+[ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="1_2i0r2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx34e"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyagw"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anex6"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(15, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whk7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx34e")
+}],
+"loop": true,
+"name": &"corn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyagw")
+}],
+"loop": true,
+"name": &"lettuce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anex6")
+}],
+"loop": true,
+"name": &"strawberry",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_638t5"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f4hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_638t5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35tq2"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u61vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35tq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbw5l"]
+atlas = ExtResource("1_2c4ai")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4bdh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbw5l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShopMenu" type="StaticBody2D"]
+visible = false
+script = ExtResource("1_2i0r2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 128.0
+offset_bottom = 76.0
+color = Color(0.32549, 0.32549, 0.32549, 0.129412)
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(28.75, 21.75)
+scale = Vector2(2.78125, 2.78125)
+sprite_frames = SubResource("SpriteFrames_whk7x")
+animation = &"corn"
+
+[node name="ButtonLeft" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 44.0
+offset_right = 26.0
+offset_bottom = 60.0
+
+[node name="ButtonLeftIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 53)
+rotation = 1.5708
+scale = Vector2(2.56519, 2.88675)
+sprite_frames = SubResource("SpriteFrames_0f4hf")
+
+[node name="ButtonRight" type="Button" parent="."]
+offset_left = 31.096
+offset_top = 43.52
+offset_right = 53.096
+offset_bottom = 59.52
+
+[node name="ButtonRightIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(37.096, 50.52)
+rotation = -1.5708
+scale = Vector2(2.565, 2.887)
+sprite_frames = SubResource("SpriteFrames_u61vs")
+
+[node name="PriceLabel" type="RichTextLabel" parent="."]
+offset_left = 60.0
+offset_top = 7.0
+offset_right = 100.0
+offset_bottom = 30.0
+theme_override_font_sizes/normal_font_size = 16
+text = "100"
+
+[node name="CoinIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(105, 18)
+sprite_frames = SubResource("SpriteFrames_q4bdh")
+
+[node name="BuyButtonColor" type="ColorRect" parent="."]
+offset_left = 62.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 59.0
+color = Color(0.521569, 0.137255, 0.0313726, 1)
+
+[node name="BuyButton" type="Button" parent="."]
+offset_left = 62.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 59.0
+
+[connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]
